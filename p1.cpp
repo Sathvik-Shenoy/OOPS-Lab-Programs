@@ -3,7 +3,7 @@ using namespace std;
 class Employee
 {
     public:int empno;
-    float da,it,netsal,basic;
+    float a,it,netsal,basic;
     string name;
     void get();
     void calc();
@@ -17,8 +17,8 @@ void Employee::get()
 void Employee::calc()
 {
     float gross;
-    da=0.52*basic;
-    gross=basic+da;
+    a=0.52*basic;
+    gross=basic+a;
     it=0.3*gross;
     netsal=gross-it;
 }
