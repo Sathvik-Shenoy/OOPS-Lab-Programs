@@ -1,16 +1,20 @@
 #include<iostream>
-#define max 10
+#define max 50
 using namespace std;
-int q[max],front=-1,rear=-1;
+template <class T>
 class queue
 {
     public:
+    T q[max];
+    int front=-1,rear=-1;
     void enqueue();
     void dequeue();
+    void display();
 };
-void queue::enqueue()
+template <class T>
+void queue<T>::enqueue()
 {
-    int ele;
+    T ele;
     cout<<"Enter the element:-";
     cin>>ele;
     if(front==-1 && rear ==-1)
@@ -25,7 +29,8 @@ void queue::enqueue()
         q[++rear]=ele;
     }
 }
-void queue::dequeue()
+template <class T>
+void queue<T>::dequeue()
 {
     if(front==rear)
     {
@@ -40,7 +45,8 @@ void queue::dequeue()
         cout<<"Deleted element is "<<q[front++];
     }
 }
-void display()
+template <class T>
+void queue<T>::display()
 {
     if(front==-1)
         cout<<"Queue underflow";
@@ -53,21 +59,26 @@ void display()
 }
 int main()
 {
-    queue l;
     int ch;
+    queue <int>q;
+    queue <double>q1;
     while(1){
-    cout<<"\nEnter 1 for enqueue, 2 for dequeue, 3 to display, 4 to exit:-";
+    cout<<"\nEnter 1 to enqueue integer queue, 2 to dequeue integer queue, 3 to display integer queue,Enter 4 to enqueue double queue, 5 to dequeue double queue, 6 to display double queue, 7 to exit:-";
     cin>>ch;
     switch(ch)
     {
-        case 1:l.enqueue();
-               break; 
-        case 2:l.dequeue();
+        case 1:q.enqueue();
                break;
-        case 3:display();
+        case 2:q.dequeue();
                break;
-        case 4:exit(0);
-        default:cout<<"Invalid entry";
-                break;  
-    }}
-}
+        case 3:q.display();
+               break;
+        case 4:q1.enqueue();
+               break;
+        case 5:q1.dequeue();
+               break;
+        case 6:q1.display();
+               break;
+        case 7:exit(0);      
+    }
+}}
